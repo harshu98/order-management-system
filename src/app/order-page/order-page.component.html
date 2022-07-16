@@ -1,4 +1,9 @@
 <div class="container mt-5">
+    <div class="d-flex flex-row-reverse">
+        <ngb-toast *ngIf="show" [autohide]="true" (hidden)="show=false" class="bg-secondary text-white">
+            {{Message}}
+        </ngb-toast>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="text-center fs-1 fw-bold">Order Management System
@@ -45,7 +50,7 @@
     </div>
     <div class="modal-body">
         <form [formGroup]="form">
-            <div class="form-group">
+            <div class="form-group" *ngIf="!isAdd">
                 <label for="orderNumber">Order Number</label>
                 <input type="text" formControlName="orderNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f[ 'orderNumber'].errors }" />
                 <div *ngIf="submitted && f[ 'orderNumber'].errors" class="invalid-feedback">
@@ -53,8 +58,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="dueDate">dueDate</label>
-                <input type="text" formControlName="dueDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['dueDate'].errors }" />
+                <label for="dueDate">Due Date</label>
+                <input type="text" formControlName="dueDate" placeholder="YYYY-MM-DD" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['dueDate'].errors }" />
                 <div *ngIf="submitted && f['dueDate'].errors" class="invalid-feedback">
                     <div *ngIf="f['dueDate'].errors['required']">dueDate is required</div>
                 </div>
