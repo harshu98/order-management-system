@@ -1,0 +1,97 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center fs-1 fw-bold">Order Management System
+                <button type="button" class="btn btn-dark float-end" (click)="addButton(content)">Add</button>
+            </div>
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Order Number</th>
+                        <th scope="col">Order Due Date</th>
+                        <th scope="col">Customer name</th>
+                        <th scope="col">Customer Address</th>
+                        <th scope="col">Customer Phone</th>
+                        <th scope="col">OrderTotal</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of orders">
+                        <th scope="row">{{ order.Order_Number }}</th>
+                        <td>{{ order.Order_Due_Date }}</td>
+                        <td>{{ order.Customer_name }}</td>
+                        <td>{{ order.Customer_Address }}</td>
+                        <td>{{ order.Customer_Phone }}</td>
+                        <td>{{ order.OrderTotal }}</td>
+                        <td class="col d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary" (click)="editButton(order.Order_Number,content)">Edit</button>
+                            <button type="button" class="btn btn-danger" (click)="deleteOrder(order.Order_Number)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-between p-2">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+                </ngb-pagination>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #content let-modal>
+    <div class="modal-header text-center">
+        <h4 class="modal-title w-100">Add Order Details</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="form">
+            <div class="form-group">
+                <label for="orderNumber">Order Number</label>
+                <input type="text" formControlName="orderNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f[ 'orderNumber'].errors }" />
+                <div *ngIf="submitted && f[ 'orderNumber'].errors" class="invalid-feedback">
+                    <div *ngIf="f[ 'orderNumber'].errors[ 'required']">orderNumber is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dueDate">dueDate</label>
+                <input type="text" formControlName="dueDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['dueDate'].errors }" />
+                <div *ngIf="submitted && f['dueDate'].errors" class="invalid-feedback">
+                    <div *ngIf="f['dueDate'].errors['required']">dueDate is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customerName">customerName</label>
+                <input type="customerName" formControlName="customerName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['customerName'].errors }" />
+                <div *ngIf="submitted && f['customerName'].errors" class="invalid-feedback">
+                    <div *ngIf="f['customerName'].errors['required']">customerName is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customerAddress">customerAddress</label>
+                <input type="text" formControlName="customerAddress" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['customerAddress'].errors }" />
+                <div *ngIf="submitted && f['customerAddress'].errors" class="invalid-feedback">
+                    <div *ngIf="f['customerAddress'].errors['required']">customerAddress is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customerPhone">customerPhone</label>
+                <input type="customerPhone" formControlName="customerPhone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['customerPhone'].errors }" />
+                <div *ngIf="submitted && f['customerPhone'].errors" class="invalid-feedback">
+                    <div *ngIf="f['customerPhone'].errors['required']">customerPhone is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="orderTotal">orderTotal</label>
+                <input type="text" formControlName="orderTotal" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['orderTotal'].errors }" />
+                <div *ngIf="submitted && f['orderTotal'].errors" class="invalid-feedback">
+                    <div *ngIf="f['orderTotal'].errors['required']">orderTotal is required</div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dark" (click)="addOrder()" *ngIf="isAdd">Add Order</button>
+        <button type="button" class="btn btn-dark" (click)="editOrder()" *ngIf="isEdit">Edit Order</button>
+        <button type="button" class="btn btn-dark" (click)="modal.close( 'Close click')">Close</button>
+    </div>
+</ng-template>

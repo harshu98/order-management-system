@@ -7,11 +7,11 @@ interface users {
   password: string;
 }
 interface customers {
-  "Order Number": number,
-  "Order Due Date": string,
-  "Customer name": string,
-  "Customer Address": string,
-  "Customer Phone": string,
+  "Order_Number": number,
+  "Order_Due_Date": string,
+  "Customer_name": string,
+  "Customer_Address": string,
+  "Customer_Phone": string,
   "OrderTotal": number
 }
 @Injectable({

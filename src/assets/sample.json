@@ -1,24 +1,24 @@
 [{
-        "Order Number": 1,
-        "Order Due Date": "2022-07-11",
-        "Customer name": "John",
-        "Customer Address": "haveli",
-        "Customer Phone": "123-456-789",
+        "Order_Number": 1,
+        "Order_Due_Date": "2022-07-11",
+        "Customer_name": "John",
+        "Customer_Address": "haveli",
+        "Customer_Phone": "123-456-789",
         "OrderTotal": "200"
     },
     {
-        "Order Number": 2,
-        "Order Due Date": "2022-07-12",
-        "Customer name": "John2",
-        "Customer Address": "haveli",
-        "Customer Phone": "1235-456-789",
+        "Order_Number": 2,
+        "Order_Due_Date": "2022-07-12",
+        "Customer_name": "John2",
+        "Customer_Address": "haveli",
+        "Customer_Phone": "1235-456-789",
         "OrderTotal": "300"
     }, {
-        "Order Number": 3,
-        "Order Due Date": "2022-07-21",
-        "Customer name": "John3",
-        "Customer Address": "haveli",
-        "Customer Phone": "12377-456-789",
+        "Order_Number": 3,
+        "Order_Due_Date": "2022-07-21",
+        "Customer_name": "John3",
+        "Customer_Address": "haveli",
+        "Customer_Phone": "12377-456-789",
         "OrderTotal": "500"
     }
 ]
