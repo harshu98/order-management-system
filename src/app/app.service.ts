@@ -24,7 +24,7 @@ export class AppService {
   constructor(public http: HttpClient) { }
 
   checkUser(): Observable<users[]> {
-    console.log(Endpoint);
+    // console.log(Endpoint);
     return this.http.get<users[]>(Endpoint + '/login');
   };
 
@@ -33,7 +33,7 @@ export class AppService {
   }
 
   addOrder(data: customers): Observable<boolean> {
-    console.log(data);
+    // console.log(data);
     const params = data;
     return this.http.post<boolean>(Endpoint + '/addOrder', params);
   }

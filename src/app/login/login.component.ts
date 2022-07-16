@@ -32,10 +32,10 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     };
-    console.log(this.f['username'].value, this.f['password'].value);
+    // console.log(this.f['username'].value, this.f['password'].value);
     const usersList = await lastValueFrom(this.service.checkUser());
     const isLoggedIn = usersList.filter((user) => { return user.username === this.f['username'].value && user.password === this.f['password'].value }).length == 0 ? false : true;
-    console.log(isLoggedIn);
+    // console.log(isLoggedIn);
     if (isLoggedIn) {
       this.router.navigateByUrl('orders');
     }

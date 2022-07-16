@@ -31,9 +31,9 @@ export class OrderPageComponent implements OnInit {
   collectionSize = 0;
   form!: FormGroup;
   async ngOnInit(): Promise<void> {
-    console.log('orders');
+    // console.log('orders');
     this.orders = await lastValueFrom(this.service.getCustomerDetails());
-    console.log(this.orders);
+    // console.log(this.orders);
     this.collectionSize = this.orders.length;
     this.form = this.fb.group({
       orderNumber: [''],
@@ -53,14 +53,14 @@ export class OrderPageComponent implements OnInit {
     this.isEdit = false;
   }
   async addOrder() {
-    console.log('add order');
-    console.log(this.form);
+    // console.log('add order');
+    // console.log(this.form);
     this.submitted = true;
     if (this.form.invalid) {
-      console.log('"INVALID"')
+      // console.log('"INVALID"')
       return;
     }
-    console.log(this.form.value);
+    // console.log(this.form.value);
     const formData: customers = {
       "Order_Number": this.orders.length + 1,
       "Order_Due_Date": this.form.value.dueDate,
@@ -82,7 +82,7 @@ export class OrderPageComponent implements OnInit {
     }
   }
   editButton(id: number, content: any) {
-    console.log('edit order');
+    // console.log('edit order');
     this.isAdd = false;
     this.isEdit = true;
     this.modalService.open(content, { centered: true });
@@ -101,10 +101,10 @@ export class OrderPageComponent implements OnInit {
     }
   }
   async editOrder() {
-    console.log("editOrder");
+    // console.log("editOrder");
     this.submitted = true;
     if (this.form.invalid) {
-      console.log('"INVALID"')
+      // console.log('"INVALID"')
       return;
     }
     const formData: customers = {
@@ -128,8 +128,8 @@ export class OrderPageComponent implements OnInit {
     }
   }
   async deleteOrder(id: number) {
-    console.log('delete order');
-    console.log(id);
+    // console.log('delete order');
+    // console.log(id);
     const result = await lastValueFrom(this.service.deleteOrder(id));
     if (result) {
       this.modalService.dismissAll();
@@ -142,6 +142,4 @@ export class OrderPageComponent implements OnInit {
       this.show = true;
     }
   }
-  refreshCountries() { }
-
 }
