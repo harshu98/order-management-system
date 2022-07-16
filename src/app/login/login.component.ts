@@ -10,7 +10,8 @@ import { AppService } from '../app.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  Message = '';
+  show = false;
   loginForm!: FormGroup;
   loading = false;
   submitted = false;
@@ -37,8 +38,13 @@ export class LoginComponent implements OnInit {
     const isLoggedIn = usersList.filter((user) => { return user.username === this.f['username'].value && user.password === this.f['password'].value }).length == 0 ? false : true;
     // console.log(isLoggedIn);
     if (isLoggedIn) {
+      this.Message = "logged in successfully"
+      this.show = true;
       this.router.navigateByUrl('orders');
     }
-    else { return; }
+    else {
+      this.Message = "Invalid User Try admin admin"
+      this.show = true; return;
+    }
   }
 }
